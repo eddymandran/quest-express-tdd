@@ -30,4 +30,21 @@ app.post('/bookmarks', (req, res) => {
   });
 });
 
+app.get('/bookmarks/:id', (req, res) => {
+  const { id } = req.params;
+  connection.query(
+    'SELECT * FROM bookmark WHERE id = ?',
+    [id],
+    (err, results) => {
+      if (results.length <= 0) {
+        return res.status(404).json({ error: 'Bookmark not found' });
+      }
+
+      const { id, ...rest } = results[0];
+
+      res.status(200).json(rest);
+    }
+  );
+});
+
 module.exports = app;
