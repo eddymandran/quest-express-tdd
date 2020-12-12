@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon",
-    "test": "jest",
-    "test:watch": "jest --watchAll"
+    "test": "DB_NAME=bookmarks_app_test jest",
+    "test:watch": "DB_NAME=bookmarks_app_test jest --watchAll"
   },
   "keywords": [],
   "author": "",
